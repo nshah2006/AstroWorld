@@ -1,0 +1,53 @@
+# ASTROWORLD — Project Rules
+
+Mobile-first social app for amateur astronomers. Frontend phase: build screens on MOCK DATA only. No backend yet.
+
+## Stack (fixed — do not substitute or add libraries without asking)
+- Expo (React Native), SDK 54
+- TypeScript
+- Expo Router (file-based routing in /app)
+- TanStack Query (server state — not used until backend phase)
+- Zustand (local state)
+- NativeWind (styling)
+- Reanimated (animation)
+- react-native-maps (terrestrial maps only)
+- Sentry (error tracking)
+
+## Project structure
+- /app — routes/screens. Logic, data, state, navigation ONLY. No raw styling.
+- /components/ui — presentational ("dumb") components. The ONLY place styling lives.
+- /lib — types, helpers
+- /mocks — typed mock data + sync accessor functions (stand-in for real data)
+- /store — Zustand stores
+- /theme — design tokens
+
+## Separation of logic and presentation (so Figma designs can drop in later)
+- Screens compose /components/ui primitives. They never style directly, never use inline styles, never hardcode visual values.
+- Presentational components receive everything via typed props. No business logic, no data fetching, no store access inside them.
+- Every component has its own file with an exported typed props interface.
+- All UI imports come from the barrel: `import { Card, Button } from '@/components/ui'`. Never import UI from individual files.
+- Keep exported names and prop shapes stable — this barrel is the swap point for future Figma-based implementations.
+
+## Theme (Aurora) — use tokens, never hardcode these values
+- bg #000000 · surface #23313e · teal #86cdc3 · lavender #bb90e3 · blue #52a5dc · text #ecf3f2 · muted #bac7d2
+- All color/spacing/radius/font values reference /theme tokens, not literals in components.
+- Red-light mode: when enabled, swap to red-only palette (dark red bg, red text/accents, NO blue/green/white).
+
+## Data (frontend phase)
+- All data is mock data from /mocks via synchronous accessor functions (e.g. getMockSessions()).
+- No network calls, no Supabase, no auth. Mock accessors are the seams where real data plugs in later.
+
+## Design principles
+- Calm, not addictive: no infinite-scroll dopamine loops, restrained animation.
+- Field-ready: core flows (logging, saved plans) work with zero network by design.
+- Built by stargazers: correct astronomy vocabulary, no condescension, no salesman tone.
+
+## Workflow
+- Build only what the current prompt asks. Stop and summarize when done.
+- Keep diffs small and reviewable. Don't refactor unrelated code.
+- If a needed UI component doesn't exist, create it in /components/ui first, then consume it.
+
+## Quality gates (run after EVERY change, do not proceed until clean)
+- `npx tsc --noEmit` passes
+- linter passes
+- never log user PII to Sentry
