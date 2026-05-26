@@ -1,4 +1,5 @@
 export { getMockCelestialObjects } from "@/mocks/celestial-objects";
+export { getMockEquipmentCatalog, searchMockEquipmentCatalog } from "@/mocks/equipment-catalog";
 export { getMockMarketplaceListingById, getMockMarketplaceListings } from "@/mocks/marketplace";
 export { getMockPostById, getMockPosts, getMockRepliesByPostId } from "@/mocks/posts";
 export { getMockSessionById, getMockSessions } from "@/mocks/sessions";

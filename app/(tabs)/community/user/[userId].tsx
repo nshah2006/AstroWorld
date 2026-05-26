@@ -21,7 +21,7 @@ export default function CommunityUserProfileScreen() {
       <ThemedText size="xl" weight="semibold">
         Profile
       </ThemedText>
-      <BasicProfileView user={user} />
+      <BasicProfileView user={user} isOwnProfile={false} />
     </Screen>
   );
 }
