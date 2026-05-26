@@ -48,6 +48,18 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="community/post/[postId]"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="community/user/[userId]"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",

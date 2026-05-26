@@ -67,6 +67,16 @@ export interface Post {
   createdAtIso: string;
 }
 
+export interface PostReply {
+  id: string;
+  postId: string;
+  authorId: string;
+  authorDisplayName: string;
+  authorAvatarInitials: string;
+  body: string;
+  createdAtIso: string;
+}
+
 export interface SellerSummary {
   id: string;
   displayName: string;

@@ -1,4 +1,4 @@
-import type { Post } from "@/lib/types";
+import type { Post, PostReply } from "@/lib/types";
 import { getMockCurrentUser } from "@/mocks/user";
 
 const user = getMockCurrentUser();
@@ -49,10 +49,59 @@ const mockPosts: Post[] = [
   },
 ];
 
+const mockRepliesByPostId: Record<string, PostReply[]> = {
+  "post-001": [
+    {
+      id: "reply-001",
+      postId: "post-001",
+      authorId: "user-002",
+      authorDisplayName: "Ari Patel",
+      authorAvatarInitials: "AP",
+      body: "Great catch on M13. Did you use any light-pollution filter on that run?",
+      createdAtIso: "2026-05-22T03:31:00.000Z",
+    },
+    {
+      id: "reply-002",
+      postId: "post-001",
+      authorId: "user-003",
+      authorDisplayName: "Lena Cho",
+      authorAvatarInitials: "LC",
+      body: "That seeing report sounds ideal. I may try the same window tomorrow night.",
+      createdAtIso: "2026-05-22T03:54:00.000Z",
+    },
+  ],
+  "post-002": [
+    {
+      id: "reply-003",
+      postId: "post-002",
+      authorId: "user-001",
+      authorDisplayName: "Nirmal Shah",
+      authorAvatarInitials: "NS",
+      body: "Bridge detail looks clean. Curious what your final integration time was.",
+      createdAtIso: "2026-05-21T06:02:00.000Z",
+    },
+  ],
+  "post-003": [
+    {
+      id: "reply-004",
+      postId: "post-003",
+      authorId: "user-001",
+      authorDisplayName: "Nirmal Shah",
+      authorAvatarInitials: "NS",
+      body: "The tripod spreader tip is underrated. Helped a lot on windy lakefront nights.",
+      createdAtIso: "2026-05-21T00:14:00.000Z",
+    },
+  ],
+};
+
 export function getMockPosts(): Post[] {
   return mockPosts;
 }
 
 export function getMockPostById(postId: string): Post | undefined {
   return mockPosts.find((post) => post.id === postId);
+}
+
+export function getMockRepliesByPostId(postId: string): PostReply[] {
+  return mockRepliesByPostId[postId] ?? [];
 }

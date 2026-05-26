@@ -1,6 +1,8 @@
 export { Avatar, type AvatarProps } from "./Avatar";
+export { BasicProfileView, type BasicProfileViewProps } from "./BasicProfileView";
 export { Button, type ButtonProps } from "./Button";
 export { Card, type CardProps } from "./Card";
+export { CommunityFeed, type CommunityFeedProps } from "./CommunityFeed";
 export { Input, type InputProps } from "./Input";
 export { LogConditionEditor, type LogConditionEditorProps } from "./LogConditionEditor";
 export { LogEquipmentPicker, type LogEquipmentPickerProps } from "./LogEquipmentPicker";
@@ -9,6 +11,7 @@ export { LogFlowStepHeader, type LogFlowStepHeaderProps } from "./LogFlowStepHea
 export { LogObjectPicker, type LogObjectPickerProps } from "./LogObjectPicker";
 export { LogReviewStep, type LogReviewStepProps } from "./LogReviewStep";
 export { RegionFeedPreview, type RegionFeedPreviewProps } from "./RegionFeedPreview";
+export { PostDetailView, type PostDetailViewProps } from "./PostDetailView";
 export { Screen, type ScreenProps } from "./Screen";
 export { StatsRow, type StatsRowProps } from "./StatsRow";
 export { TabIcon, type TabIconProps } from "./TabIcon";
