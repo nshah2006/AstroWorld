@@ -9,10 +9,12 @@ export interface ActiveFilters {
 export interface UIStore {
   isRedLightModeEnabled: boolean;
   activeFilters: ActiveFilters;
+  savedListingIds: string[];
   toggleRedLightMode: () => void;
   setEquipmentModelFilter: (equipmentModel: string | null) => void;
   setMarketplaceCategoryFilter: (marketplaceCategory: string | null) => void;
   setMaxDistanceFilter: (distanceKm: number | null) => void;
+  toggleSavedListing: (listingId: string) => void;
   resetFilters: () => void;
 }
 
@@ -25,6 +27,7 @@ const initialFilters: ActiveFilters = {
 export const useUIStore = create<UIStore>((set) => ({
   isRedLightModeEnabled: false,
   activeFilters: initialFilters,
+  savedListingIds: [],
   toggleRedLightMode: () =>
     set((state) => ({
       isRedLightModeEnabled: !state.isRedLightModeEnabled,
@@ -49,6 +52,12 @@ export const useUIStore = create<UIStore>((set) => ({
         ...state.activeFilters,
         maxDistanceKm: distanceKm,
       },
+    })),
+  toggleSavedListing: (listingId) =>
+    set((state) => ({
+      savedListingIds: state.savedListingIds.includes(listingId)
+        ? state.savedListingIds.filter((savedListingId) => savedListingId !== listingId)
+        : [...state.savedListingIds, listingId],
     })),
   resetFilters: () =>
     set(() => ({

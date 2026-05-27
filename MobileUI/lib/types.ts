@@ -93,8 +93,18 @@ export interface MarketplaceListing {
   category: "telescope" | "eyepiece" | "mount" | "camera" | "accessory";
   distanceKm: number;
   description: string;
+  specs: string[];
   seller: SellerSummary;
   photos: string[];
+}
+
+export interface MarketplaceMessage {
+  id: string;
+  listingId: string;
+  senderId: string;
+  senderDisplayName: string;
+  body: string;
+  sentAtIso: string;
 }
 
 export interface SkyObjectHighlight {

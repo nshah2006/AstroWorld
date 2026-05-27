@@ -5,13 +5,17 @@ import { getMockCurrentUser } from "@/mocks";
 
 export interface ProfileStore {
   currentUser: User;
+  isOnboarded: boolean;
   addEquipmentToProfile: (equipmentItem: EquipmentItem) => void;
   removeEquipmentFromProfile: (equipmentId: string) => void;
   refreshCurrentUserFromMocks: () => void;
+  completeOnboarding: () => void;
+  resetOnboarding: () => void;
 }
 
 export const useProfileStore = create<ProfileStore>((set) => ({
   currentUser: getMockCurrentUser(),
+  isOnboarded: false,
   addEquipmentToProfile: (equipmentItem) =>
     set((state) => {
       const alreadyExists = state.currentUser.equipment.some(
@@ -38,5 +42,13 @@ export const useProfileStore = create<ProfileStore>((set) => ({
   refreshCurrentUserFromMocks: () =>
     set(() => ({
       currentUser: getMockCurrentUser(),
+    })),
+  completeOnboarding: () =>
+    set(() => ({
+      isOnboarded: true,
+    })),
+  resetOnboarding: () =>
+    set(() => ({
+      isOnboarded: false,
     })),
 }));

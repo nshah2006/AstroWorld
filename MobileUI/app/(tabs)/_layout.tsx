@@ -60,6 +60,25 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="marketplace"
+        options={{
+          title: "Marketplace",
+          tabBarIcon: ({ focused }) => <TabIcon focused={focused} />,
+        }}
+      />
+      <Tabs.Screen
+        name="marketplace/[listingId]"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="marketplace/messages/[listingId]"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
