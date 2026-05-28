@@ -49,6 +49,15 @@ export default function ProfileScreen() {
         onPress={toggleRedLightMode}
         variant="secondary"
       />
+      {__DEV__ ? (
+        <Button
+          label="Trigger test error"
+          variant="secondary"
+          onPress={() => {
+            throw new Error("Sentry test error from Profile screen");
+          }}
+        />
+      ) : null}
       <ProfileStatsRow stats={currentUser.stats} />
       <EquipmentListCard equipment={currentUser.equipment} />
       <AddEquipmentPanel

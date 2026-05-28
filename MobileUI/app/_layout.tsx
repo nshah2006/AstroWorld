@@ -2,6 +2,7 @@ import { Stack } from "expo-router";
 import { useProfileStore } from "@/store";
 import { ThemeModeProvider } from "@/theme";
 import "react-native-reanimated";
+import "@/lib/sentry";
 
 export {
   // Catch any errors thrown by the Layout component.
