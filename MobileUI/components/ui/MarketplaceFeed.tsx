@@ -1,4 +1,5 @@
 import { Pressable, ScrollView, View, type ViewProps } from "react-native";
+import Animated, { FadeIn } from "react-native-reanimated";
 
 import type { MarketplaceListing } from "@/lib/types";
 import { Card } from "@/components/ui/Card";
@@ -54,9 +55,10 @@ export function MarketplaceFeed({
       </Card>
 
       <ScrollView className="flex-1" contentContainerClassName="gap-space-3 pb-space-6">
-        {listings.map((listing) => (
-          <Pressable key={listing.id} onPress={() => onOpenListing(listing.id)}>
-            <Card className="gap-space-2">
+        {listings.map((listing, index) => (
+          <Animated.View key={listing.id} entering={FadeIn.duration(260).delay(index * 50)}>
+            <Pressable onPress={() => onOpenListing(listing.id)}>
+              <Card className="gap-space-2">
               <ThemedText weight="semibold">{listing.title}</ThemedText>
               <View className="flex-row items-center justify-between">
                 <Tag label={listing.category} tone="lavender" />
@@ -70,8 +72,9 @@ export function MarketplaceFeed({
                   Message seller
                 </ThemedText>
               </Pressable>
-            </Card>
-          </Pressable>
+              </Card>
+            </Pressable>
+          </Animated.View>
         ))}
       </ScrollView>
     </View>

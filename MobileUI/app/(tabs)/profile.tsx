@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 
 import {
   AddEquipmentPanel,
+  Button,
   EquipmentListCard,
   ProfileHeaderCard,
   ProfileStatsRow,
@@ -10,11 +11,13 @@ import {
   ThemedText,
 } from "@/components/ui";
 import { searchMockEquipmentCatalog, getMockSessions } from "@/mocks";
-import { useProfileStore } from "@/store";
+import { useProfileStore, useUIStore } from "@/store";
 
 export default function ProfileScreen() {
   const currentUser = useProfileStore((state) => state.currentUser);
   const addEquipmentToProfile = useProfileStore((state) => state.addEquipmentToProfile);
+  const isRedLightModeEnabled = useUIStore((state) => state.isRedLightModeEnabled);
+  const toggleRedLightMode = useUIStore((state) => state.toggleRedLightMode);
   const [equipmentSearchQuery, setEquipmentSearchQuery] = useState("");
 
   const sessionPhotos = useMemo(
@@ -38,6 +41,14 @@ export default function ProfileScreen() {
         Profile
       </ThemedText>
       <ProfileHeaderCard user={currentUser} isOwnProfile />
+      <ThemedText size="sm" tone="muted">
+        Toggle night-vision-safe red-light mode
+      </ThemedText>
+      <Button
+        label={isRedLightModeEnabled ? "Disable red-light mode" : "Enable red-light mode"}
+        onPress={toggleRedLightMode}
+        variant="secondary"
+      />
       <ProfileStatsRow stats={currentUser.stats} />
       <EquipmentListCard equipment={currentUser.equipment} />
       <AddEquipmentPanel

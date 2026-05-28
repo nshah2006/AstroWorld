@@ -1,19 +1,21 @@
 import { Tabs } from "expo-router";
 
 import { TabIcon } from "@/components/ui";
-import { semanticColors } from "@/theme";
+import { redLightColors, semanticColors, useThemeMode } from "@/theme";
 
 export default function TabLayout() {
+  const { isRedLightMode } = useThemeMode();
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "black",
-          borderTopColor: semanticColors.border,
+          backgroundColor: isRedLightMode ? redLightColors.bg : "black",
+          borderTopColor: isRedLightMode ? redLightColors.border : semanticColors.border,
         },
-        tabBarActiveTintColor: semanticColors["accent-teal"],
-        tabBarInactiveTintColor: semanticColors.muted,
+        tabBarActiveTintColor: isRedLightMode ? redLightColors.accent : semanticColors["accent-teal"],
+        tabBarInactiveTintColor: isRedLightMode ? redLightColors.muted : semanticColors.muted,
         tabBarLabelStyle: {
           fontSize: 12,
         },

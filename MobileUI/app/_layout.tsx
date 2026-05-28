@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
 import { useProfileStore } from "@/store";
+import { ThemeModeProvider } from "@/theme";
 import "react-native-reanimated";
 
 export {
@@ -11,18 +12,20 @@ export default function RootLayout() {
   const isOnboarded = useProfileStore((state) => state.isOnboarded);
 
   return (
-    <Stack>
-      <Stack.Screen
-        name="(tabs)"
-        options={{ headerShown: false }}
-        redirect={!isOnboarded}
-      />
-      <Stack.Screen
-        name="onboarding"
-        options={{ headerShown: false }}
-        redirect={isOnboarded}
-      />
-      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-    </Stack>
+    <ThemeModeProvider>
+      <Stack>
+        <Stack.Screen
+          name="(tabs)"
+          options={{ headerShown: false }}
+          redirect={!isOnboarded}
+        />
+        <Stack.Screen
+          name="onboarding"
+          options={{ headerShown: false }}
+          redirect={isOnboarded}
+        />
+        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+      </Stack>
+    </ThemeModeProvider>
   );
 }

@@ -1,4 +1,5 @@
 import { Pressable, ScrollView, View, type ViewProps } from "react-native";
+import Animated, { FadeIn } from "react-native-reanimated";
 
 import type { Post } from "@/lib/types";
 import { Avatar } from "@/components/ui/Avatar";
@@ -33,9 +34,10 @@ export function CommunityFeed({
         placeholder="e.g. ASI533, NexStar, Delos"
       />
       <ScrollView className="flex-1" contentContainerClassName="gap-space-3 pb-space-6">
-        {posts.map((post) => (
-          <Pressable key={post.id} onPress={() => onOpenPost(post.id)}>
-            <Card className="gap-space-3">
+        {posts.map((post, index) => (
+          <Animated.View key={post.id} entering={FadeIn.duration(260).delay(index * 50)}>
+            <Pressable onPress={() => onOpenPost(post.id)}>
+              <Card className="gap-space-3">
               <Pressable onPress={() => onOpenAuthor(post.author.id)}>
                 <View className="flex-row items-center gap-space-2">
                   <Avatar initials={post.author.avatarInitials} size="sm" />
@@ -60,8 +62,9 @@ export function CommunityFeed({
                   <Tag key={gear} label={gear} />
                 ))}
               </View>
-            </Card>
-          </Pressable>
+              </Card>
+            </Pressable>
+          </Animated.View>
         ))}
       </ScrollView>
     </View>

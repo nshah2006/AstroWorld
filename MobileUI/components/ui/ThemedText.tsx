@@ -1,4 +1,5 @@
 import { Text, type TextProps } from "react-native";
+import { useThemeMode } from "@/theme";
 
 export interface ThemedTextProps extends TextProps {
   tone?: "primary" | "muted" | "teal" | "lavender";
@@ -43,8 +44,15 @@ export function ThemedText({
   className,
   ...props
 }: ThemedTextProps & { className?: string }) {
+  const { isRedLightMode } = useThemeMode();
+  const redToneClasses: Record<NonNullable<ThemedTextProps["tone"]>, string> = {
+    primary: "text-red-200",
+    muted: "text-red-400",
+    teal: "text-red-300",
+    lavender: "text-red-400",
+  };
   const classes = [
-    toneClasses[tone],
+    isRedLightMode ? redToneClasses[tone] : toneClasses[tone],
     sizeClasses[size],
     weightClasses[weight],
     alignClasses[align],

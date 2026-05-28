@@ -1,6 +1,7 @@
 import { View, type ViewProps } from "react-native";
 
 import { ThemedText } from "@/components/ui/ThemedText";
+import { redLightColors, useThemeMode } from "@/theme";
 
 export interface AvatarProps extends ViewProps {
   initials: string;
@@ -25,6 +26,7 @@ export function Avatar({
   className,
   ...props
 }: AvatarProps & { className?: string }) {
+  const { isRedLightMode } = useThemeMode();
   return (
     <View
       className={[
@@ -32,6 +34,11 @@ export function Avatar({
         sizeClasses[size],
         className ?? "",
       ].join(" ").trim()}
+      style={
+        isRedLightMode
+          ? { backgroundColor: redLightColors.surface, borderColor: redLightColors.border }
+          : undefined
+      }
       {...props}
     >
       <ThemedText tone="teal" size={textSizeByAvatar[size]} weight="semibold">

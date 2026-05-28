@@ -1,6 +1,7 @@
 import { View, type ViewProps } from "react-native";
 
 import { ThemedText } from "@/components/ui/ThemedText";
+import { redLightColors, useThemeMode } from "@/theme";
 
 export interface TagProps extends ViewProps {
   label: string;
@@ -20,6 +21,7 @@ const textToneByTag: Record<NonNullable<TagProps["tone"]>, "primary" | "muted"> 
 };
 
 export function Tag({ label, tone = "muted", className, ...props }: TagProps & { className?: string }) {
+  const { isRedLightMode } = useThemeMode();
   return (
     <View
       className={[
@@ -27,6 +29,14 @@ export function Tag({ label, tone = "muted", className, ...props }: TagProps & {
         toneClasses[tone],
         className ?? "",
       ].join(" ").trim()}
+      style={
+        isRedLightMode
+          ? {
+              backgroundColor: tone === "muted" ? redLightColors.surface : redLightColors.accentSoft,
+              borderColor: redLightColors.border,
+            }
+          : undefined
+      }
       {...props}
     >
       <ThemedText size="xs" weight="medium" tone={textToneByTag[tone]} align="center">

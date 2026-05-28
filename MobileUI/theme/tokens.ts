@@ -8,6 +8,16 @@ export const auroraColors = {
   muted: "#bac7d2",
 } as const;
 
+export const redLightColors = {
+  bg: "#120000",
+  surface: "#240606",
+  accent: "#ff4d4d",
+  accentSoft: "#b63a3a",
+  text: "#ff8a8a",
+  muted: "#d46a6a",
+  border: "#7a2f2f",
+} as const;
+
 export const semanticColors = {
   primary: auroraColors.text,
   muted: auroraColors.muted,
