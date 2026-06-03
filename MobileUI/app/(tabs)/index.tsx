@@ -1,7 +1,9 @@
 import { RegionFeedPreview, Screen, StatsRow, ThemedText, TonightSkyCard } from "@/components/ui";
 import { getMockPosts, getMockTonightSky, getMockCurrentUser } from "@/mocks";
+import { useRouter } from "expo-router";
 
 export default function TabOneScreen() {
+  const router = useRouter();
   const tonightSky = getMockTonightSky();
   const posts = getMockPosts();
   const currentUser = getMockCurrentUser();
@@ -11,7 +13,11 @@ export default function TabOneScreen() {
       <ThemedText size="xl" weight="semibold">
         Home
       </ThemedText>
-      <TonightSkyCard tonightSky={tonightSky} onPlanSession={() => {}} onRelocate={() => {}} />
+      <TonightSkyCard
+        tonightSky={tonightSky}
+        onPlanSession={() => {}}
+        onRelocate={() => router.push("/relocation")}
+      />
       <StatsRow
         sessions={currentUser.stats.totalSessions}
         following={currentUser.stats.followingCount}

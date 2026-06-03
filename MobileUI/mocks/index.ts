@@ -7,5 +7,6 @@ export {
 } from "@/mocks/marketplace";
 export { getMockPostById, getMockPosts, getMockRepliesByPostId } from "@/mocks/posts";
 export { getMockSessionById, getMockSessions } from "@/mocks/sessions";
+export { getMockStargazingSites } from "@/mocks/sites";
 export { getMockTonightSky } from "@/mocks/tonight-sky";
 export { getMockCurrentUser, getMockUserById, getMockUsers } from "@/mocks/user";

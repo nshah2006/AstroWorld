@@ -25,6 +25,7 @@ export default function RootLayout() {
           options={{ headerShown: false }}
           redirect={isOnboarded}
         />
+        <Stack.Screen name="relocation" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: "modal" }} />
       </Stack>
     </ThemeModeProvider>

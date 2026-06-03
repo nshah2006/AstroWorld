@@ -22,6 +22,7 @@ export { ProfileHeaderCard, type ProfileHeaderCardProps } from "./ProfileHeaderC
 export { ProfileStatsRow, type ProfileStatsRowProps } from "./ProfileStatsRow";
 export { Screen, type ScreenProps } from "./Screen";
 export { SessionPhotoGrid, type SessionPhotoGridProps } from "./SessionPhotoGrid";
+export { SitesMapView, type SitesMapViewProps } from "./SitesMapView";
 export { StatsRow, type StatsRowProps } from "./StatsRow";
 export { TabIcon, type TabIconProps } from "./TabIcon";
 export { Tag, type TagProps } from "./Tag";

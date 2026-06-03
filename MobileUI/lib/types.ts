@@ -107,6 +107,14 @@ export interface MarketplaceMessage {
   sentAtIso: string;
 }
 
+export interface StargazingSite {
+  id: string;
+  name: string;
+  location: Coordinates;
+  lightPollutionRating: 1 | 2 | 3 | 4 | 5;
+  notes?: string;
+}
+
 export interface SkyObjectHighlight {
   id: string;
   name: string;
